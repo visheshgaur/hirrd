@@ -27,7 +27,7 @@ if(e.target===e.currentTarget) {
     <>
     <nav className='py-4 flex justify-between items-center '>
         <Link>
-        <img src="public/logo.png" className='h-20'></img>
+        <img src="/logo.png" className='h-20'></img>
         </Link>
       
        <div className='flex gap-8'>

@@ -11,21 +11,26 @@ const Onboarding = () => {
     navigate(currRole==="recruiter"?"/post-job":"/jobs");
   };
   const handleRoleSelection=async(role)=>{
-await user.update({
-  unsafeMetadata:{role}
-}).then(()=>{
-  navigate(role==='recruiter'?"/post-job":"/jobs")
+await user
+  .update({unsafeMetadata:{role} })
+  .then(()=>{
+    console.log(`Role updated to:${role}`);
+    navigateUser(role);
+  // navigate(role==='recruiter'?"/post-job":"/jobs")
 })
+  
 .catch((err)=>{
-  console.log(err);
-})
-}
+  console.log("error updating role:",err);
+});
+};
 useEffect(()=>{
 if(user?.unsafeMetadata?.role){
-navigate(
-  user?.unsafeMetadata?.role==='recruiter'?"/post-job":"/jobs"
-)
+  navigateUser(user.unsafeMetadata.role);
 }
+// navigate(
+//   user?.unsafeMetadata?.role==='recruiter'?"/post-job":"/jobs"
+// )
+
 },[user])
   
   if(!isLoaded){

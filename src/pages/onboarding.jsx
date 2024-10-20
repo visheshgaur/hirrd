@@ -7,6 +7,9 @@ const Onboarding = () => {
   const{user , isLoaded}=useUser();
   const navigate=useNavigate();
 
+  const navigateUser=(currRole)=>{
+    navigate(currRole==="recruiter"?"/post-job":"/jobs");
+  };
   const handleRoleSelection=async(role)=>{
 await user.update({
   unsafeMetadata:{role}
